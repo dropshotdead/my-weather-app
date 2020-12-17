@@ -6,6 +6,7 @@ body {
 div.main-block {
   max-width: 600px;
   margin: 120px auto;
+  margin-bottom: 10px;
   background-color: #fff;
   border-radius: 10px;
   padding: 40px 40px;
@@ -136,4 +137,18 @@ div.col {
   font-size: 20px;
   font-weight: 500;
   padding: 0 20px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer a {
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.footer-name {
+  font-size: 16px;
 }
