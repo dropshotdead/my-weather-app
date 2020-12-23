@@ -16,6 +16,22 @@ currentDay.innerHTML = `${day}`;
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${hour}:${minutes}`;
 
+function displayDefaultWeather(response) {
+  let temperature = document.querySelector("#current-temp");
+  temperature.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  let cityForecast = document.querySelector("#city-forecast");
+  let forecast = response.data.weather[0].description;
+  cityForecast.innerHTML = `${forecast}`;
+
+  let precipitation = document.querySelector("#details-precipitation");
+  let precipitationDetails = response.data.main.humidity;
+  precipitation.innerHTML = `${precipitationDetails}%`;
+
+  let wind = document.querySelector("#details-wind");
+  let windDetails = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windDetails}`;
+}
+
 function showCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
@@ -83,6 +99,13 @@ function getCurrentCity(response) {
   let windDetails = Math.round(response.data.wind.speed);
   wind.innerHTML = `${windDetails}`;
 }
+
+let cityUrl = "new york";
+let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
+let unit = "metric";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
+
+axios.get(apiUrl).then(displayDefaultWeather);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", showCity);
