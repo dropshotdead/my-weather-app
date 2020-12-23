@@ -16,19 +16,19 @@ currentDay.innerHTML = `${day}`;
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${hour}:${minutes}`;
 
+function formatDate(timestamp) {}
+
 function displayDefaultWeather(response) {
   let temperature = document.querySelector("#current-temp");
-  temperature.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   let cityForecast = document.querySelector("#city-forecast");
   let forecast = response.data.weather[0].description;
-  cityForecast.innerHTML = `${forecast}`;
-
   let precipitation = document.querySelector("#details-precipitation");
   let precipitationDetails = response.data.main.humidity;
-  precipitation.innerHTML = `${precipitationDetails}%`;
-
   let wind = document.querySelector("#details-wind");
   let windDetails = Math.round(response.data.wind.speed);
+  temperature.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  cityForecast.innerHTML = `${forecast}`;
+  precipitation.innerHTML = `${precipitationDetails}%`;
   wind.innerHTML = `${windDetails}`;
 }
 
