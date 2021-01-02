@@ -49,11 +49,16 @@ function displayDefaultWeather(response) {
   let wind = document.querySelector("#details-wind");
   let windDetails = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector("#current-date");
+  let iconElement = document.querySelector("#icon");
   temperature.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   cityForecast.innerHTML = `${forecast}`;
   precipitation.innerHTML = `${precipitationDetails}%`;
   wind.innerHTML = `${windDetails}`;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  /*iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );*/
 }
 
 function showCity(event) {
@@ -89,6 +94,9 @@ function getWeather(response) {
   let wind = document.querySelector("#details-wind");
   let windDetails = Math.round(response.data.wind.speed);
   wind.innerHTML = `${windDetails}`;
+
+  let dateElement = document.querySelector("#current-date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function getPosition(event) {
@@ -124,6 +132,114 @@ function getCurrentCity(response) {
   wind.innerHTML = `${windDetails}`;
 }
 
+function showLisbon(event) {
+  event.preventDefault();
+  let cityUrl = "lisbon";
+  let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(getLisbonWeather);
+}
+
+function getLisbonWeather(response) {
+  let currentCity = document.querySelector("#city-name");
+  currentCity.innerHTML = "Lisbon";
+  let currentTemp = document.querySelector("#current-temp");
+  let currentTempRound = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = `${currentTempRound}°C`;
+  let cityForecast = document.querySelector("#city-forecast");
+  let forecast = response.data.weather[0].description;
+  cityForecast.innerHTML = `${forecast}`;
+  let precipitation = document.querySelector("#details-precipitation");
+  let precipitationDetails = response.data.main.humidity;
+  precipitation.innerHTML = `${precipitationDetails}%`;
+
+  let wind = document.querySelector("#details-wind");
+  let windDetails = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windDetails}`;
+}
+
+function showParis(event) {
+  event.preventDefault();
+  let cityUrl = "paris";
+  let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(getParisWeather);
+}
+
+function getParisWeather(response) {
+  let currentCity = document.querySelector("#city-name");
+  currentCity.innerHTML = "Paris";
+  let currentTemp = document.querySelector("#current-temp");
+  let currentTempRound = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = `${currentTempRound}°C`;
+  let cityForecast = document.querySelector("#city-forecast");
+  let forecast = response.data.weather[0].description;
+  cityForecast.innerHTML = `${forecast}`;
+  let precipitation = document.querySelector("#details-precipitation");
+  let precipitationDetails = response.data.main.humidity;
+  precipitation.innerHTML = `${precipitationDetails}%`;
+
+  let wind = document.querySelector("#details-wind");
+  let windDetails = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windDetails}`;
+}
+
+function showSydney(event) {
+  event.preventDefault();
+  let cityUrl = "sydney";
+  let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(getSydneyWeather);
+}
+
+function getSydneyWeather(response) {
+  let currentCity = document.querySelector("#city-name");
+  currentCity.innerHTML = "Sydney";
+  let currentTemp = document.querySelector("#current-temp");
+  let currentTempRound = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = `${currentTempRound}°C`;
+  let cityForecast = document.querySelector("#city-forecast");
+  let forecast = response.data.weather[0].description;
+  cityForecast.innerHTML = `${forecast}`;
+  let precipitation = document.querySelector("#details-precipitation");
+  let precipitationDetails = response.data.main.humidity;
+  precipitation.innerHTML = `${precipitationDetails}%`;
+
+  let wind = document.querySelector("#details-wind");
+  let windDetails = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windDetails}`;
+}
+
+function showNewyork(event) {
+  event.preventDefault();
+  let cityUrl = "new york";
+  let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(getNewyorkWeather);
+}
+
+function getNewyorkWeather(response) {
+  let currentCity = document.querySelector("#city-name");
+  currentCity.innerHTML = "New York";
+  let currentTemp = document.querySelector("#current-temp");
+  let currentTempRound = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = `${currentTempRound}°C`;
+  let cityForecast = document.querySelector("#city-forecast");
+  let forecast = response.data.weather[0].description;
+  cityForecast.innerHTML = `${forecast}`;
+  let precipitation = document.querySelector("#details-precipitation");
+  let precipitationDetails = response.data.main.humidity;
+  precipitation.innerHTML = `${precipitationDetails}%`;
+
+  let wind = document.querySelector("#details-wind");
+  let windDetails = Math.round(response.data.wind.speed);
+  wind.innerHTML = `${windDetails}`;
+}
+
 let cityUrl = "singapore";
 let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
 let unit = "metric";
@@ -136,6 +252,18 @@ searchForm.addEventListener("submit", showCity);
 
 let currentCityButton = document.querySelector("#current-city");
 currentCityButton.addEventListener("click", getPosition);
+
+let lisbonButton = document.querySelector("#lisbon-button");
+lisbonButton.addEventListener("click", showLisbon);
+
+let parisButton = document.querySelector("#paris-button");
+parisButton.addEventListener("click", showParis);
+
+let sydneyButton = document.querySelector("#sydney-button");
+sydneyButton.addEventListener("click", showSydney);
+
+let newyorkButton = document.querySelector("#newyork-button");
+newyorkButton.addEventListener("click", showNewyork);
 
 /*function showCelcius(event) {
   event.preventDefault();
