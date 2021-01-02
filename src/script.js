@@ -41,7 +41,7 @@ function displayDefaultWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );*/
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=singapore&appid=${apiKey}&units=${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=singapore&appid=${apiKey}&units=${unit}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
@@ -66,7 +66,7 @@ function displayForecast(response) {
   weatherForecastElement.innerHTML = `
           <div class="day col">
             <p class="forecast-time">${formatHours(forecast.dt * 1000)}
-            hrs <br /><img class="weather-icon" src = "http://openweathermap.org/img/wn/${
+            hrs <br /><img class="weather-icon" src = "https://openweathermap.org/img/wn/${
               forecast.weather[0].icon
             }@2x.png"> <br />${Math.round(forecast.main.temp)}°C</p>
           </div>`;
@@ -75,7 +75,7 @@ function displayForecast(response) {
   weatherForecastElement.innerHTML += `
           <div class="day col">
             <p class="forecast-time">${formatHours(forecast.dt * 1000)}
-            hrs <br /><img class="weather-icon" src = "http://openweathermap.org/img/wn/${
+            hrs <br /><img class="weather-icon" src = "https://openweathermap.org/img/wn/${
               forecast.weather[0].icon
             }@2x.png"> <br />${Math.round(forecast.main.temp)}°C</p>
           </div>`;
@@ -84,7 +84,7 @@ function displayForecast(response) {
   weatherForecastElement.innerHTML += `
           <div class="day col">
             <p class="forecast-time">${formatHours(forecast.dt * 1000)}
-            hrs <br /><img class="weather-icon" src = "http://openweathermap.org/img/wn/${
+            hrs <br /><img class="weather-icon" src = "https://openweathermap.org/img/wn/${
               forecast.weather[0].icon
             }@2x.png"> <br />${Math.round(forecast.main.temp)}°C</p>
           </div>`;
@@ -93,7 +93,7 @@ function displayForecast(response) {
   weatherForecastElement.innerHTML += `
           <div class="day col">
             <p class="forecast-time">${formatHours(forecast.dt * 1000)}
-            hrs <br /><img class="weather-icon" src = "http://openweathermap.org/img/wn/${
+            hrs <br /><img class="weather-icon" src = "https://openweathermap.org/img/wn/${
               forecast.weather[0].icon
             }@2x.png"> <br />${Math.round(forecast.main.temp)}°C</p>
           </div>`;
@@ -102,7 +102,7 @@ function displayForecast(response) {
   weatherForecastElement.innerHTML += `
           <div class="day col">
             <p class="forecast-time">${formatHours(forecast.dt * 1000)}
-            hrs <br /><img class="weather-icon" src = "http://openweathermap.org/img/wn/${
+            hrs <br /><img class="weather-icon" src = "https://openweathermap.org/img/wn/${
               forecast.weather[0].icon
             }@2x.png"> <br />${Math.round(forecast.main.temp)}°C</p>
           </div>`;
@@ -123,7 +123,7 @@ function showCity(event) {
 
   axios.get(`${apiUrl}`).then(getWeather);
 
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
@@ -188,7 +188,7 @@ function showLisbon(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(getLisbonWeather);
 
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
@@ -218,7 +218,7 @@ function showParis(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(getParisWeather);
 
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
@@ -248,7 +248,7 @@ function showSydney(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(getSydneyWeather);
 
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
@@ -278,7 +278,7 @@ function showNewyork(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(getNewyorkWeather);
 
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
   axios.get(`${apiUrl}`).then(displayForecast);
 }
 
