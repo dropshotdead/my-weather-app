@@ -121,6 +121,13 @@ p.temp-switch {
   text-align: right;
 }
 
+img.weather-icon {
+  width: 40px;
+}
+
+p.forecast-time {
+  font-size: 14px;
+}
 a.temp-switch {
   font-weight: 700;
 }
