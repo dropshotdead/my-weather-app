@@ -81,6 +81,14 @@ function displayForecast(response) {
   let forecast = response.data.list[0];
   console.log(forecast);
 
+  weatherForecastElement.innerHTML = `
+          <div class="day col">
+            <p class="forecast-time">${formatHours(forecast.dt * 1000)}
+            hrs <br /><img class="weather-icon" src = "http://openweathermap.org/img/wn/${
+              forecast.weather[0].icon
+            }@2x.png"> <br />${Math.round(forecast.main.temp)}°C</p>
+          </div>`;
+
   forecast = response.data.list[1];
   weatherForecastElement.innerHTML += `
           <div class="day col">
@@ -197,6 +205,9 @@ function showLisbon(event) {
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
   axios.get(apiUrl).then(getLisbonWeather);
+
+  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
 }
 
 function getLisbonWeather(response) {
