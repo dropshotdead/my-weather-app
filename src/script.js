@@ -1,4 +1,4 @@
-let now = new Date();
+/*let now = new Date();
 let hour = now.getHours();
 let minutes = now.getMinutes();
 let days = [
@@ -14,11 +14,33 @@ let day = days[now.getDay()];
 let currentDay = document.querySelector("#current-day");
 currentDay.innerHTML = `${day}`;
 let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${hour}:${minutes}`;
+currentTime.innerHTML = `${hour}:${minutes}`;*/
 
-function formatDate(timestamp) {}
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hour}:${minutes}`;
+}
 
 function displayDefaultWeather(response) {
+  console.log(response.data);
   let temperature = document.querySelector("#current-temp");
   let cityForecast = document.querySelector("#city-forecast");
   let forecast = response.data.weather[0].description;
@@ -26,10 +48,12 @@ function displayDefaultWeather(response) {
   let precipitationDetails = response.data.main.humidity;
   let wind = document.querySelector("#details-wind");
   let windDetails = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector("#current-date");
   temperature.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   cityForecast.innerHTML = `${forecast}`;
   precipitation.innerHTML = `${precipitationDetails}%`;
   wind.innerHTML = `${windDetails}`;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function showCity(event) {
@@ -100,7 +124,7 @@ function getCurrentCity(response) {
   wind.innerHTML = `${windDetails}`;
 }
 
-let cityUrl = "new york";
+let cityUrl = "singapore";
 let apiKey = "ab1f27fbaadfd901bfff8bb239240d0d";
 let unit = "metric";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityUrl}&units=${unit}&appid=${apiKey}`;
