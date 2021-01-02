@@ -215,8 +215,6 @@ function getLisbonWeather(response) {
   let wind = document.querySelector("#details-wind");
   let windDetails = Math.round(response.data.wind.speed);
   wind.innerHTML = `${windDetails}`;
-  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=lisbon&appid=${apiKey}&units=${unit}`;
-  axios.get(`${apiUrl}`).then(displayForecast);
 }
 
 function showParis(event) {
