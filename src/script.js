@@ -1,21 +1,3 @@
-/*let now = new Date();
-let hour = now.getHours();
-let minutes = now.getMinutes();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let currentDay = document.querySelector("#current-day");
-currentDay.innerHTML = `${day}`;
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${hour}:${minutes}`;*/
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hour = date.getHours();
