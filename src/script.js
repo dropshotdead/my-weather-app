@@ -160,6 +160,9 @@ function getCity(position) {
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
   axios.get(`${apiUrl}`).then(getCurrentCity);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityUrl}&appid=${apiKey}&units=${unit}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
 }
 
 function getCurrentCity(response) {
